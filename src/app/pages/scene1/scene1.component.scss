@@ -1,0 +1,57 @@
+.background-container {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover; // Ajustar para cubrir toda la página
+  background-position: center; // Centrar la imagen
+  background-repeat: no-repeat; // Evitar que se repita
+  filter: opacity(0.9); // Añadir un poco de transparencia para que el contenido destaque
+  position: relative; // Asegurarte de que las zonas interactivas se posicionen correctamente
+}
+
+.interactive-zone {
+  position: absolute; // Permitir que se posicionen sobre el contenedor
+  cursor: pointer; // Cambiar el cursor al pasar sobre las zonas
+ // border: 2px solid red; // Borde visible para ver las zonas interactivas
+  opacity: 0.5; // Semi-transparente para que se vea el fondo
+  transition: opacity 0.3s; // Transición suave al cambiar de opacidad
+
+  &:hover {
+    opacity: 0.7; // Aumentar la opacidad al pasar el ratón
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; // Asegura que el modal esté por encima de todo
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: black;
+    }
+  }
+}

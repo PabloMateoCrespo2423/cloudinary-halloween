@@ -1,0 +1,5 @@
+<div class="background-container" [ngStyle]="{'background-image': 'url(' + (imgUrl ? imgUrl : imgUrlPlaceHolder) + ')'}">
+  <div *ngIf="i==11">
+    <p (click)="navigateToRegister()">COMENZAR</p>
+  </div>
+</div>

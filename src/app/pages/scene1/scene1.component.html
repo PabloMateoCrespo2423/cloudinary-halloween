@@ -1,0 +1,28 @@
+<div #container class="background-container" [ngStyle]="{
+  'background-image': 'url(' + (imgUrl ? imgUrl : imgUrlPlaceHolder) + ')',
+}">
+  <div *ngFor="let zone of interactiveZones"
+       class="interactive-zone"
+       (click)="getActionForObject(zone.name)()"
+       [ngStyle]="{
+         'position': 'absolute',
+         'top': zone.position.top,
+         'left': (zone.name === 'Lamp' || zone.name === 'Lighting'  || zone.name === 'Picture frame') 
+                   ? (zone.position.left.replace('px', '') * 0.8 + 'px') 
+                   : zone.position.left,
+         'width': zone.position.width,
+         'height': zone.position.height,
+         'cursor': 'pointer',
+         'opacity': 0.5
+       }">
+  </div>
+</div>
+
+<div class="modal" *ngIf="showModal" (click)="closeModal($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()"> <!-- Evitar cerrar cuando clic en contenido -->
+    <h2>Aviso Importante</h2>
+    <p>¡Bienvenido a la experiencia interactiva! Explora y juega con los objetos en la escena... pero ten cuidado, ¡encender la luz podría revelar algo inesperado!</p>
+
+    <button (click)="closeModal()">Cerrar</button>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+.background-container {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover; /* Ajustar para cubrir toda la página */
+  background-position: center ; /* Centrar la imagen */
+  background-repeat: no-repeat; /* Evitar que se repita */
+  filter: opacity(0.9); /* Añadir un poco de transparencia para que el contenido destaque */
+}
+
+div{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+p {
+  color: #B00000; /* Color rojo sangre */
+  font-family: "Cinzel", serif;
+  font-weight: bold;
+  font-size: 40px;
+  position: relative;
+  opacity: 0; /* Empieza invisible */
+  transform: scale(0.8); /* Empieza más pequeño */
+  text-shadow: 
+    0 1px 0 rgba(0, 0, 0, 0.7), 
+    0 2px 0 rgba(0, 0, 0, 0.7),
+    0 3px 0 rgba(0, 0, 0, 0.7);
+  
+  /* Animación de aparición */
+  animation: appear 2s ease-out forwards, bleed 3s infinite 2s; /* Aparece y luego pulsa */
+}
+
+p::after {
+  content: '';
+  position: absolute;
+  top: 90%; /* Posicionado justo debajo de las letras */
+  left: 0;
+  right: 0;
+  height: 0;
+  background: #B00000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  opacity: 0;
+  animation: bleeding 3s infinite 2s; /* Sangrado que empieza después de 2s */
+}
+
+/* Animación de la sangre */
+@keyframes bleeding {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    height: 15px; /* Sangre saliendo */
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Animación de aparición del texto */
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* Empieza pequeño */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Aparece a tamaño normal */
+  }
+}
+
+/* Animación de "pulsación" para el texto */
+@keyframes bleed {
+  0% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.02); /* Ligeramente expandido */
+  }
+  100% { 
+    transform: scale(1);
+  }
+}
+
